@@ -83,7 +83,9 @@ function AdWordsService(options) {
   };
 
   self.get = function(clientCustomerId, selector, done) {
-    self.soapHeader.RequestHeader.clientCustomerId = clientCustomerId;
+    if (clientCustomerId) {
+      self.soapHeader.RequestHeader.clientCustomerId = clientCustomerId;
+    }
 
     async.waterfall([
       // get client
